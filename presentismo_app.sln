@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "presentismo_app", "presentismo_app\presentismo_app.njsproj", "{C19E8372-17CC-444F-8A2C-1CA72200787C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64F0B4A3-280C-40B5-80E6-ADF2D986248C}
+	EndGlobalSection
+EndGlobal

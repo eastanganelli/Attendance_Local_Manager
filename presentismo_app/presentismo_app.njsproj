@@ -29,13 +29,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
-    <Content Include="index.html" />
+    <Content Include="public\assets\functions.js" />
+    <Content Include="public\assets\index.js" />
+    <Content Include="public\assets\management.js" />
     <Content Include="package.json" />
     <Content Include="public\index.html" />
     <Content Include="public\management.html" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="public\assets\" />
     <Folder Include="public\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

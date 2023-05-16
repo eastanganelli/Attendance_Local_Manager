@@ -1,5 +1,3 @@
-const alert_ = require('functions.js')
-
 const getAttendance = () => {
     const subject = $('#subjectFilter').val();
     const date = $('#dateFilter').val();

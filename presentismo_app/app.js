@@ -53,6 +53,7 @@ app.post('/attendance', (req, res) => {
 });
 
 app.get('/attendance/check', (req, res) => {
+    const isTeacher = true;
 
     if (isTeacher) {
         const subjectFilter = req.query.subject || '';

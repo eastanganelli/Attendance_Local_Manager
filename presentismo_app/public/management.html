@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Attendance Management</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <title>Panel Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(() => {
             // Function to retrieve attendance records based on filter criteria
@@ -21,50 +22,6 @@
                 });
             };
 
-            // Function to export table data to CSV
-            const exportToCSV = () => {
-                const rows = [];
-                const headers = [];
-
-                // Extract header names
-                $('#attendanceTable thead th').each((index, element) => {
-                    headers.push($(element).text());
-                });
-
-                // Extract table data rows
-                $('#attendanceTable tbody tr').each((index, element) => {
-                    const rowData = [];
-                    $(element).find('td').each((index, element) => {
-                        rowData.push($(element).text());
-                    });
-                    rows.push(rowData);
-                });
-
-                // Create CSV content
-                let csvContent = `${headers.join(',')}\n`;
-                rows.forEach((row) => {
-                    csvContent += `${row.join(',')}\n`;
-                });
-
-                // Download the CSV file
-                const filename = 'attendance.csv';
-                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-                if (navigator.msSaveBlob) {
-                    navigator.msSaveBlob(blob, filename);
-                } else {
-                    const link = document.createElement('a');
-                    if (link.download !== undefined) {
-                        const url = URL.createObjectURL(blob);
-                        link.setAttribute('href', url);
-                        link.setAttribute('download', filename);
-                        link.style.visibility = 'hidden';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }
-                }
-            };
-
             // Event handler for filter button click
             $('#filterBtn').click(() => {
                 getAttendance();
@@ -72,37 +29,74 @@
 
             // Event handler for export button click
             $('#exportBtn').click(() => {
-                exportToCSV();
+                const subject = $('#subjectFilter').val();
+                const date = $('#dateFilter').val();
+                const student = $('#studentFilter').val();
+
+                // Get table data as a 2D array
+                const tableData = [['Student Name', 'Subject', 'Date']];
+                $('#attendanceTable tbody tr').each((index, row) => {
+                    const rowData = [];
+                    $(row).find('td').each((index, cell) => {
+                        rowData.push($(cell).text());
+                    });
+                    tableData.push(rowData);
+                });
+
+                // Convert 2D array to CSV string
+                let csvContent = '';
+                tableData.forEach((row) => {
+                    const csvRow = row.map((cell) => `"${cell}"`).join(',');
+                    csvContent += `${csvRow}\n`;
+                });
+
+                // Create a temporary anchor element to initiate the file download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = `data:text/csv;charset=utf-8,${encodeURIComponent(csvContent)}`;
+                downloadLink.download = 'attendance.csv';
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
             });
         });
     </script>
 </head>
 <body>
-    <h1>Attendance Management</h1>
-    <div>
-        <label for="subjectFilter">Subject:</label>
-        <input type="text" id="subjectFilter"><br><br>
 
-        <label for="dateFilter">Date:</label>
-        <input type="date" id="dateFilter"><br><br>
+    <div class="container">
+        <h1 class="mt-5">Panel Administrador</h1>
 
-        <label for="studentFilter">Student:</label>
-        <input type="text" id="studentFilter"><br><br>
-
-        <button id="filterBtn">Filter</button>
-        <button id="exportBtn">Export to CSV</button>
+        <div id="filtros">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">DNI</span>
+                <input type="text" class="form-control" id="studentFilter" placeholder="Username" aria-label="DNI" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Fecha</span>
+                <input type="date" class="form-control" id="dateFilter" placeholder="Dia" aria-label="Dia" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Materia</span>
+                <input type="text" class="form-control" id="subjectFilter" placeholder="Materia" aria-label="Materia" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group">
+                <button class="btn btn-outline-secondary" id="filterBtn" type="button">Filtrar</button>
+                <button class="btn btn-outline-secondary" id="exportBtn"  type="button">Exportar a CSV</button>
+            </div>
+        </div>
     </div>
-
-    <table id="attendanceTable">
-        <thead>
-            <tr>
-                <th>Student Name</th>
-                <th>Subject</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <div class="container mt-5">
+        <table id="attendanceTable" class="table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </body>
 </html>

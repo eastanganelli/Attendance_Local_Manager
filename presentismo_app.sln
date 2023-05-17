@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "presentismo_app", "presentismo_app\presentismo_app.njsproj", "{C19E8372-17CC-444F-8A2C-1CA72200787C}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "NodeJS_Attendance_Management_EndPoint", "NodeJS_Attendance_Management_EndPoint\NodeJS_Attendance_Management_EndPoint.njsproj", "{C19E8372-17CC-444F-8A2C-1CA72200787C}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "student_frontend", "Student_FrontEnd\student_frontend.esproj", "{79B4B06A-1136-4526-8542-1464B9F1EE6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C19E8372-17CC-444F-8A2C-1CA72200787C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B4B06A-1136-4526-8542-1464B9F1EE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79B4B06A-1136-4526-8542-1464B9F1EE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79B4B06A-1136-4526-8542-1464B9F1EE6D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{79B4B06A-1136-4526-8542-1464B9F1EE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79B4B06A-1136-4526-8542-1464B9F1EE6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B4B06A-1136-4526-8542-1464B9F1EE6D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

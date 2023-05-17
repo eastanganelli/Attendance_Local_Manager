@@ -1,12 +1,5 @@
-const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-const csv = require('csv-parser');
-const fs = require('fs');
-
-const app = express();
-const port = 3000;
-
-const db = new sqlite3.Database('asistencia.db');
+const db = new sqlite3.Database('./db/asistencia.db');
 
 db.run(`
   CREATE TABLE IF NOT EXISTS attendance (
@@ -17,12 +10,7 @@ db.run(`
   )
 `);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(express.static('public'));
-
-app.post('/attendance', (req, res) => {
+const postAttendance = (req, res) => {
     const { studentName, subject, date } = req.body;
 
     db.get(
@@ -50,9 +38,9 @@ app.post('/attendance', (req, res) => {
             }
         }
     );
-});
+};
 
-app.get('/attendance/check', (req, res) => {
+const getCheckAttendance = (req, res) => {
     const isTeacher = true;
 
     if (isTeacher) {
@@ -62,17 +50,12 @@ app.get('/attendance/check', (req, res) => {
 
         let query = 'SELECT studentName, subject, date FROM attendance WHERE 1=1';
 
-        if (subjectFilter) {
+        if (subjectFilter)
             query += ` AND subject LIKE '%${subjectFilter}%'`;
-        }
-
-        if (dateFilter) {
+        if (dateFilter)
             query += ` AND date = '${dateFilter}'`;
-        }
-
-        if (studentFilter) {
+        if (studentFilter)
             query += ` AND studentName LIKE '%${studentFilter}%'`;
-        }
 
         db.all(query, [], (err, rows) => {
             if (err) {
@@ -85,16 +68,9 @@ app.get('/attendance/check', (req, res) => {
     } else {
         res.status(403).send('Access denied');
     }
-});
+};
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
-
-app.get('/admin', (req, res) => {
-    res.sendFile(__dirname + '/public/management.html');
-});
-
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+module.exports = {
+    postAttendance,
+    getCheckAttendance
+}

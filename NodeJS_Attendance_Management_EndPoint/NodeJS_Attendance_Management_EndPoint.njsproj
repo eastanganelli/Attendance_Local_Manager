@@ -2,7 +2,7 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>presentismo_app</Name>
+    <Name>NodeJS_Attendance_Management_EndPoint</Name>
     <RootNamespace>presentismo_app</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -10,7 +10,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c19e8372-17cc-444f-8a2c-1ca72200787c</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>app.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
@@ -29,6 +30,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="controllers\attendance.controller.js" />
+    <Content Include="controllers\ip.controller.js" />
     <Content Include="public\assets\functions.js" />
     <Content Include="public\assets\index.js" />
     <Content Include="public\assets\management.js" />
@@ -36,8 +39,13 @@
     <Content Include="public\index.html" />
     <Content Include="public\management.html" />
     <Content Include="README.md" />
+    <Content Include="routes\attendance.route.js" />
+    <Content Include="routes\ip.route.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="controllers\" />
+    <Folder Include="db\" />
+    <Folder Include="routes\" />
     <Folder Include="public\assets\" />
     <Folder Include="public\" />
   </ItemGroup>

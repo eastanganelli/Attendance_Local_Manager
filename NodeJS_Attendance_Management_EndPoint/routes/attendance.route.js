@@ -1,14 +1,14 @@
 'use strict'
 
-const express = require('express')
-let attendance = express.Router();
+const express = require('express');
+let AttendanceRoute = express.Router();
 
 const {
     getCheckAttendance,
     postAttendance
 } = require('../controllers/attendance.controller');
 
-attendance.post('/', postAttendance);
-attendance.get('/check', getCheckAttendance);
+AttendanceRoute.post('/', postAttendance);
+AttendanceRoute.get('/check', getCheckAttendance);
 
-module.exports = attendance;
+module.exports = AttendanceRoute;

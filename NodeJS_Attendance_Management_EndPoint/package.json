@@ -1,20 +1,25 @@
 {
-  "name": "presentismo_app",
-  "version": "0.0.0",
+  "name": "attendance_management",
+  "version": "1.0.0",
   "description": "presentismo_app",
   "main": "app.js",
   "dependencies": {
     "csv-parser": "^3.0.0",
+    "device-uuid": "^1.0.4",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "ip": "^2.0.0",
+    "express-session": "^1.17.3",
+    "http-server": "^14.1.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^4.6.1",
     "sqlite3": "^5.1.6"
   },
   "author": {
-    "name": ""
+    "name": "Ezequiel Augusto Stanganelli"
   },
   "devDependencies": {
-    "eslint": "^8.21.0"
+    "eslint": "^8.40.0"
   },
   "eslintConfig": {}
 }

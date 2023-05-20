@@ -39,12 +39,11 @@ app.post('/attendance', (req, res) => {
                     'INSERT INTO attendance (studentName, subject, date) VALUES (?, ?, ?)',
                     [studentName, subject, date],
                     (err) => {
-                        if (err) {
+                        if (err)
                             console.error(err);
                             res.sendStatus(500);
-                        } else {
+                        else
                             res.sendStatus(200);
-                        }
                     }
                 );
             }

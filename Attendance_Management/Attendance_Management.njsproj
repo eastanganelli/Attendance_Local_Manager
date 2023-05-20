@@ -2,7 +2,7 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>presentismo_app</Name>
+    <Name>NodeJS_Attendance_Management_EndPoint</Name>
     <RootNamespace>presentismo_app</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -10,7 +10,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c19e8372-17cc-444f-8a2c-1ca72200787c</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>app.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
@@ -28,16 +29,30 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".env" />
+    <Content Include=".eslintrc.json" />
     <Content Include="app.js" />
+    <Content Include="config\db.config.js" />
+    <Content Include="controllers\attendance.controller.js" />
+    <Content Include="controllers\auth.controller.js" />
     <Content Include="public\assets\functions.js" />
     <Content Include="public\assets\index.js" />
     <Content Include="public\assets\management.js" />
     <Content Include="package.json" />
+    <Content Include="public\device.html" />
     <Content Include="public\index.html" />
-    <Content Include="public\management.html" />
+    <Content Include="routes\management.html" />
     <Content Include="README.md" />
+    <Content Include="routes\attendance.route.js" />
+    <Content Include="routes\auth.route.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="controllers\" />
+    <Folder Include="db\" />
+    <Folder Include="config\" />
+    <Folder Include="public\admin\" />
+    <Folder Include="public\student\" />
+    <Folder Include="routes\" />
     <Folder Include="public\assets\" />
     <Folder Include="public\" />
   </ItemGroup>
